@@ -1,6 +1,6 @@
 'use server'
 
-import { createAuthenticatedClient, isFinalizedGrant } from "@interledger/open-payments"
+import { createAuthenticatedClient, isFinalizedGrant, PendingGrant } from "@interledger/open-payments"
 
 export type ActionState = {
   error: string | null,
@@ -160,6 +160,6 @@ export async function sendMoneySecondStep(initialState: ActionState, formData: F
 
   return {
     error: null,
-    redirectTo: (outgoingPaymentGrant as any).interact.redirect
+    redirectTo: (outgoingPaymentGrant as PendingGrant).interact.redirect
   }
 }
