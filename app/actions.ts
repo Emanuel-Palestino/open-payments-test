@@ -13,7 +13,7 @@ const KEY_ID = '7ba18321-0415-404b-90f9-a60eb1bfbd30'
 const SENDING_WALLET_ADDRESS_URL = 'https://ilp.interledger-test.dev/op-test-mx'
 const RECEIVING_WALLET_ADDRESS_URL = 'https://ilp.interledger-test.dev/op-test-mx'
 
-export async function sendMoneyFirstStep(initialState: any, formData: FormData): Promise<ActionState> {
+export async function sendMoneyFirstStep(initialState: ActionState, formData: FormData): Promise<ActionState> {
 
   const opClient = await createAuthenticatedClient({
     walletAddressUrl: CLIENT_WALLET_ADDRESS_URL,
@@ -49,7 +49,7 @@ export async function sendMoneyFirstStep(initialState: any, formData: FormData):
     }
   }
 
-  const amount = formData.get('amount') as string
+  //const amount = formData.get('amount') as string
 
   const incomingPayment = await opClient.incomingPayment.create(
     {
@@ -108,7 +108,7 @@ export async function sendMoneyFirstStep(initialState: any, formData: FormData):
 
 }
 
-export async function sendMoneySecondStep(initialState: any, formData: FormData): Promise<ActionState> {
+export async function sendMoneySecondStep(initialState: ActionState, formData: FormData): Promise<ActionState> {
   const opClient = await createAuthenticatedClient({
     walletAddressUrl: CLIENT_WALLET_ADDRESS_URL,
     keyId: KEY_ID,
