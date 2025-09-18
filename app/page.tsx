@@ -8,8 +8,8 @@ const initialState = {
 
 export default function Home() {
 
-  const [state, formAction, pending] = useActionState(sendMoneyFirstStep, initialState)
-  const [state2, formAction2, pending2] = useActionState(sendMoneySecondStep, initialState)
+  const [, formAction,] = useActionState(sendMoneyFirstStep, initialState)
+  const [state2, formAction2,] = useActionState(sendMoneySecondStep, initialState)
 
   return (
     <main className="w-screen h-screen flex items-center justify-center">

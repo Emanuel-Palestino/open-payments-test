@@ -1,7 +1,6 @@
 'use server'
 
 import { createAuthenticatedClient, isFinalizedGrant } from "@interledger/open-payments"
-import { createHash } from "crypto"
 
 export type ActionState = {
   error: string | null,
@@ -13,19 +12,6 @@ const KEY_ID = '7ba18321-0415-404b-90f9-a60eb1bfbd30'
 
 const SENDING_WALLET_ADDRESS_URL = 'https://ilp.interledger-test.dev/op-test-mx'
 const RECEIVING_WALLET_ADDRESS_URL = 'https://ilp.interledger-test.dev/op-test-mx'
-
-function verifyHash(
-  clientNonce: string,
-  interactNonce: string,
-  interactRef: string,
-  authServerUrl: string,
-  receivedHash: string
-) {
-  const data = `${clientNonce}\n${interactNonce}\n${interactRef}\n${authServerUrl}/`
-  const hash = createHash('sha-256').update(data).digest('base64')
-
-  return hash === receivedHash
-}
 
 export async function sendMoneyFirstStep(initialState: any, formData: FormData): Promise<ActionState> {
 
