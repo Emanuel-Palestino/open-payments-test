@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build; cp -r ./node_modules/@interledger/open-payments/dist/openapi/specs ./.next/server/app",
+    "build": "next build; cp -r ./node_modules/@interledger/open-payments/dist/openapi/specs /var/task/.next/server/app",
     "start": "next start",
     "lint": "eslint"
   },
